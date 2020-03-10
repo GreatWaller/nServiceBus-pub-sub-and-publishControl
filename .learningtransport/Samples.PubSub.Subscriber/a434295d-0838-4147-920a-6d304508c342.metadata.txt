@@ -1,0 +1,14 @@
+{
+  "NServiceBus.MessageId": "d04755eb-2cc3-4471-9ad5-ab7a008d7554",
+  "NServiceBus.MessageIntent": "Publish",
+  "NServiceBus.ConversationId": "0aa5af30-1e13-4f03-951d-ab7a008d7554",
+  "NServiceBus.CorrelationId": "d04755eb-2cc3-4471-9ad5-ab7a008d7554",
+  "NServiceBus.OriginatingMachine": "DESKTOP-EO8573I",
+  "NServiceBus.OriginatingEndpoint": "Samples.PubSub.Publisher",
+  "$.diagnostics.originating.hostid": "90c6a206602efceda275badfc16d0e16",
+  "NServiceBus.ReplyToAddress": "Samples.PubSub.Publisher",
+  "NServiceBus.ContentType": "application\/json",
+  "NServiceBus.EnclosedMessageTypes": "Shared.CreateEventMessage, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "NServiceBus.Version": "7.2.3",
+  "NServiceBus.TimeSent": "2020-03-10 08:35:02:038294 Z"
+}
