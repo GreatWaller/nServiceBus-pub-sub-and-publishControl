@@ -37,6 +37,7 @@ namespace Notifier
         void DoWork()
         {
             log.Info("do some work.");
+            notifications.Clear();
         }
     }
 }

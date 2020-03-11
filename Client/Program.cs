@@ -1,5 +1,6 @@
 ﻿using NServiceBus;
 using Shared;
+using Shared.Entity.Faces;
 using System;
 using System.Threading.Tasks;
 
@@ -43,8 +44,8 @@ namespace Client
                 {
                     var createEventMessage = new CreateEventMessage
                     {
-                        ResourceURI="VIID/" 
-
+                        ResourceURI="VIID/" ,
+                        Entity=new Face {Id=1}
                     };
                     await endpointInstance.Publish(createEventMessage)
                         .ConfigureAwait(false);

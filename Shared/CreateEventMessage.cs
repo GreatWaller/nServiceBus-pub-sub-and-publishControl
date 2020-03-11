@@ -7,6 +7,8 @@ namespace Shared
 {
     public class CreateEventMessage:IEvent
     {
+        public object Entity { get; set; }
+        public string DeviceId { get; set; }
         /// <summary>
         /// 订阅类别
         /// 订阅时必选，可同时带多个类别（此时是一个string），用英文半角逗号分隔

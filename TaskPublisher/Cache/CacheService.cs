@@ -1,0 +1,20 @@
+﻿using Shared;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TaskPublisher.Cache
+{
+    public class CacheService : ICacheService
+    {
+        public List<Device> GetAllDevices()
+        {
+            return new List<Device>();
+        }
+
+        public List<Subscribe> GetAllSubscribes()
+        {
+            return new List<Subscribe>() { new Subscribe() };
+        }
+    }
+}
