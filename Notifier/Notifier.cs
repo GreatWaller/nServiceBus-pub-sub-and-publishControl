@@ -16,7 +16,7 @@ namespace Notifier
         {
             log.Info("do nothing.");
             controller.Limatation = 2;
-            controller.Notifications.Add(new Notification { NotificationID = message.NotificationID });
+            controller.Notifications.Add(new Notification { });
 
             return Task.CompletedTask;
         }

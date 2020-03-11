@@ -10,6 +10,11 @@ namespace Notifier
     {
         private static NotificationController _notificationController = null;
         private List<Notification> notifications = new List<Notification>();
+        /// <summary>
+        /// key: subscribeId;
+        /// </summary>
+        public Dictionary<string,Queue<NotificationMessage>> NotificationDictionary { get; set; }
+
         public List<Notification> Notifications
         {
             get
