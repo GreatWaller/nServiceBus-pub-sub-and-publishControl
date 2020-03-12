@@ -8,6 +8,8 @@ namespace Notifier
     {
         static async Task Main(string[] args)
         {
+            NotificationController.GetInstance().StartTimer();
+
             Console.Title = "Samples.PubSub.Notifier";
             var endpointConfiguration = new EndpointConfiguration("Samples.PubSub.Notifier");
             endpointConfiguration.UsePersistence<LearningPersistence>();

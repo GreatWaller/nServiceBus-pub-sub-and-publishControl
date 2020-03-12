@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Shared.Entities.Faces
 {
-    public class Face
+    public class Face: IEntity
     {
         public long Id { get; set; }
     }

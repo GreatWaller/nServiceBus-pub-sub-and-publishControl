@@ -14,12 +14,22 @@ namespace TaskPublisher.Cache
 
         public List<Subscribe> GetAllSubscribes()
         {
-            return new List<Subscribe>() { new Subscribe() };
+            return new List<Subscribe> {
+                new Subscribe
+                {
+                    SubscribeID="subscribeid",
+                    ResourceURI="deviceid"
+                }};
         }
 
         public Device GetDeviceById(string id)
         {
-            return new Device { DeviceId = id };
+            return new Device
+            {
+                DeviceId = "deviceid",
+                TollgateId="tollgateid",
+                LaneId="laneid"
+            };
         }
     }
 }

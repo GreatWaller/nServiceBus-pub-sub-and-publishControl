@@ -1,7 +1,9 @@
 ﻿using NServiceBus;
 using NServiceBus.Logging;
 using Shared;
+using Shared.Entities;
 using Shared.Entities.Faces;
+using Shared.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +15,7 @@ namespace TaskPublisher
     public abstract class GrabberBase<TEvent,TEntity> : IGrabber<TEvent>, 
         IHandleMessages<TEvent>
         where TEvent : EventMessageBase<TEntity>
+        where TEntity: IEntity
     {
         static protected ILog log = LogManager.GetLogger<GrabberBase<TEvent,TEntity>>();
         protected readonly ICacheService _cacheService;
@@ -46,9 +49,10 @@ namespace TaskPublisher
 
             foreach (var subscribe in subscribes)
             {
-                var response = new NotificationMessage
+                var response = new NotificationEventMessage
                 {
-                    //Entity = message.Entity,
+                    Entity = message.Entity,
+                    Type = typeof(TEntity).Name.ToString(),
                     SubscribeID = subscribe.SubscribeID,
                     ReportInterval=subscribe.ReportInterval,
                     ReceiveAddr=subscribe.ReceiveAddr

@@ -43,14 +43,15 @@ namespace Client
                 var orderReceivedId = Guid.NewGuid();
                 if (key.Key == ConsoleKey.Enter)
                 {
-                    //var createEventMessage = new EventMessageBase
-                    //{
-                    //    ResourceURI="VIID/" ,
-                    //};
-                    var faceEvent = new FaceEvent { ResourceURI = "VIID/"/*Entity = new Face { Id = 1 }*/ };
+                    var faceEvent = new FaceEvent
+                    {
+                        ResourceURI = orderReceivedId.ToString(),
+                        Entity = new Face { Id = 1 },
+                        DeviceId = "deviceid"
+                    };
                     await endpointInstance.Publish(faceEvent)
                         .ConfigureAwait(false);
-                    Console.WriteLine($"Published CreateEventMessage Event with Id {orderReceivedId}.");
+                    Console.WriteLine($"Published CreateEventMessage Event with ResourceURI {orderReceivedId}.");
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Entities.Faces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -42,5 +43,14 @@ namespace Shared
         /// </summary>
         [MaxLength(1024)]
         public string InfoIDs { get; set; }
+
+        public List<Face> FaceObjectList { get; set; }
+        public List<Person> PersonObjectList { get; set; }
+
+        public Notification()
+        {
+            FaceObjectList = new List<Face>();
+            PersonObjectList = new List<Person>();
+        }
     }
 }
