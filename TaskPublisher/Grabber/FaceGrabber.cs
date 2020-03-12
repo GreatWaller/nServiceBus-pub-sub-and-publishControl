@@ -14,10 +14,17 @@ namespace TaskPublisher.Grabber
         {
         }
 
-        public override bool IsSubscribed(FaceEvent createEvent)
+        public override bool IsSubscribed(FaceEvent createEvent, Subscribe subscribe)
         {
             log.Info("i am from face grabber");
-            return true;
+            var device=_cacheService.GetDeviceById(createEvent.DeviceId);
+            if (subscribe.ResourceURI.Contains(device.DeviceId)
+                ||subscribe.ResourceURI.Contains(device.TollgateId)
+                ||subscribe.ResourceURI.Contains(device.LaneId))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

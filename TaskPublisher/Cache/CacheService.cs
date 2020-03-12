@@ -16,5 +16,10 @@ namespace TaskPublisher.Cache
         {
             return new List<Subscribe>() { new Subscribe() };
         }
+
+        public Device GetDeviceById(string id)
+        {
+            return new Device { DeviceId = id };
+        }
     }
 }

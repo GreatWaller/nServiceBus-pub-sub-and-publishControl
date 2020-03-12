@@ -14,7 +14,7 @@ namespace TaskPublisher.Grabber
         {
         }
 
-        public override bool IsSubscribed(PersonEvent createEvent)
+        public override bool IsSubscribed(PersonEvent createEvent,Subscribe subscribe)
         {
             log.Info("i am from person grabber");
             return true;

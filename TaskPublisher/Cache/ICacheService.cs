@@ -9,5 +9,6 @@ namespace TaskPublisher.Cache
     {
         List<Subscribe> GetAllSubscribes();
         List<Device> GetAllDevices();
+        Device GetDeviceById(string id);
     }
 }

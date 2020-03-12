@@ -27,17 +27,17 @@ namespace TaskPublisher
             //todo:规则梳理,暂时仅通过多数类型都涉及到的 设备号来决定
             var subscribes = _cacheService.GetAllSubscribes();
             var result = new List<Subscribe>();
-            foreach (var item in subscribes)
+            foreach (var subscribe in subscribes)
             {
-                if (IsSubscribed(createEvent))
+                if (IsSubscribed(createEvent,subscribe))
                 {
-                    result.Add(item);
+                    result.Add(subscribe);
                 }
             }
             return result;
         }
 
-        public abstract bool IsSubscribed(TEvent createEvent);
+        public abstract bool IsSubscribed(TEvent createEvent, Subscribe subscribe);
         public async Task Handle(TEvent message, IMessageHandlerContext context)
         {
             log.Info($"Subscriber has received CreateEventMessage event with URI {message.ResourceURI}.");
