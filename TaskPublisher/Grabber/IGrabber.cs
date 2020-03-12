@@ -6,8 +6,8 @@ using System.Text;
 
 namespace TaskPublisher
 {
-    public interface IGrabber
+    public interface IGrabber<T>
     {
-        List<Subscribe> GetALLSubscribes(CreateEventMessage createEvent);
+        List<Subscribe> GetALLSubscribes(T createEvent);
     }
 }

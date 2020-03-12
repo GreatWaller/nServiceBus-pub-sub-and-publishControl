@@ -1,7 +1,7 @@
 ﻿using NServiceBus;
 using NServiceBus.Logging;
 using Shared;
-using Shared.Entity.Faces;
+using Shared.Entities.Faces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,10 +10,11 @@ using TaskPublisher.Cache;
 
 namespace TaskPublisher
 {
-    public abstract class GrabberBase : IGrabber, 
-        IHandleMessages<CreateEventMessage>
+    public abstract class GrabberBase<TEvent,TEntity> : IGrabber<TEvent>, 
+        IHandleMessages<TEvent>
+        where TEvent : EventMessageBase<TEntity>
     {
-        static protected ILog log = LogManager.GetLogger<GrabberBase>();
+        static protected ILog log = LogManager.GetLogger<GrabberBase<TEvent,TEntity>>();
         protected readonly ICacheService _cacheService;
 
         public GrabberBase(ICacheService cacheService)
@@ -21,7 +22,7 @@ namespace TaskPublisher
             _cacheService = cacheService;
         }
 
-        public List<Subscribe> GetALLSubscribes(CreateEventMessage createEvent)
+        public List<Subscribe> GetALLSubscribes(TEvent createEvent)
         {
             //todo:规则梳理,暂时仅通过多数类型都涉及到的 设备号来决定
             var subscribes = _cacheService.GetAllSubscribes();
@@ -36,8 +37,8 @@ namespace TaskPublisher
             return result;
         }
 
-        public abstract bool IsSubscribed(CreateEventMessage createEvent);
-        public async Task Handle(CreateEventMessage message, IMessageHandlerContext context)
+        public abstract bool IsSubscribed(TEvent createEvent);
+        public async Task Handle(TEvent message, IMessageHandlerContext context)
         {
             log.Info($"Subscriber has received CreateEventMessage event with URI {message.ResourceURI}.");
 
@@ -47,7 +48,7 @@ namespace TaskPublisher
             {
                 var response = new NotificationMessage
                 {
-                    Entity = message.Entity,
+                    //Entity = message.Entity,
                     SubscribeID = subscribe.SubscribeID,
                     ReportInterval=subscribe.ReportInterval,
                     ReceiveAddr=subscribe.ReceiveAddr

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shared.Entity.Faces
+namespace Shared.Entities.Faces
 {
-    public class Face
+    public class Person
     {
         public long Id { get; set; }
     }

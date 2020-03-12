@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using NServiceBus;
+using Shared.Events;
 
 namespace Shared
 {
-    public class CreateEventMessage:IEvent
+    public class EventMessageBase<TEntity>:EventEntity<TEntity>, IEvent
     {
-        public object Entity { get; set; }
         public string DeviceId { get; set; }
         /// <summary>
         /// 订阅类别

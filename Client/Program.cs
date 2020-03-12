@@ -1,6 +1,7 @@
 ﻿using NServiceBus;
 using Shared;
-using Shared.Entity.Faces;
+using Shared.Entities.Faces;
+using Shared.Events;
 using System;
 using System.Threading.Tasks;
 
@@ -42,12 +43,12 @@ namespace Client
                 var orderReceivedId = Guid.NewGuid();
                 if (key.Key == ConsoleKey.Enter)
                 {
-                    var createEventMessage = new CreateEventMessage
-                    {
-                        ResourceURI="VIID/" ,
-                        Entity=new Face {Id=1}
-                    };
-                    await endpointInstance.Publish(createEventMessage)
+                    //var createEventMessage = new EventMessageBase
+                    //{
+                    //    ResourceURI="VIID/" ,
+                    //};
+                    var faceEvent = new FaceEvent { ResourceURI = "VIID/"/*Entity = new Face { Id = 1 }*/ };
+                    await endpointInstance.Publish(faceEvent)
                         .ConfigureAwait(false);
                     Console.WriteLine($"Published CreateEventMessage Event with Id {orderReceivedId}.");
                 }

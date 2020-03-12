@@ -8,15 +8,15 @@ using TaskPublisher.Cache;
 
 namespace TaskPublisher.Grabber
 {
-    public class FaceGrabber : GrabberBase<FaceEvent,Face>
+    public class PersonGrabber : GrabberBase<PersonEvent,Person>
     {
-        public FaceGrabber(ICacheService cacheService) : base(cacheService)
+        public PersonGrabber(ICacheService cacheService) : base(cacheService)
         {
         }
 
-        public override bool IsSubscribed(FaceEvent createEvent)
+        public override bool IsSubscribed(PersonEvent createEvent)
         {
-            log.Info("i am from face grabber");
+            log.Info("i am from person grabber");
             return true;
         }
     }
